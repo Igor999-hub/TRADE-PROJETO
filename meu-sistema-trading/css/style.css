@@ -1,0 +1,732 @@
+/* ================================================
+   RESET E CONFIGURAÇÕES BÁSICAS
+   ================================================ 
+   Isso é como "zerar o cronômetro" - remove estilos
+   padrão do navegador para começarmos do zero
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* PALETA DE CORES: Como uma caixa de tintas */
+    --primary: #2563eb;      /* Azul principal */
+    --success: #10b981;      /* Verde (lucro/win) */
+    --danger: #ef4444;       /* Vermelho (perda/loss) */
+    --warning: #f59e0b;      /* Laranja (atenção) */
+    --dark: #1e293b;         /* Escuro (fundo) */
+    --light: #f8fafc;        /* Claro (texto) */
+    --gray: #64748b;         /* Cinza (detalhes) */
+    
+    /* SOMBRAS: Efeitos de profundidade */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--light);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ================================================
+   MENU LATERAL (SIDEBAR)
+   ================================================ 
+   O menu fica fixo do lado esquerdo, como uma gaveta
+*/
+
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    padding: 2rem 0;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem 2rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 2rem;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.logo h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu-item {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.menu-item:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-left-color: var(--primary);
+}
+
+.menu-item.active {
+    background: rgba(37, 99, 235, 0.2);
+    border-left-color: var(--primary);
+}
+
+.menu-item i {
+    font-size: 1.3rem;
+    width: 25px;
+    text-align: center;
+}
+
+.menu-item span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ================================================
+   ÁREA PRINCIPAL (MAIN CONTENT)
+   ================================================ 
+   Onde o conteúdo aparece - fica ao lado do menu
+*/
+
+.main-content {
+    margin-left: 280px; /* Espaço para o menu */
+    padding: 2rem;
+    flex: 1;
+    max-width: 1400px;
+}
+
+.section {
+    display: none; /* Escondido por padrão */
+    animation: fadeIn 0.3s ease-in;
+}
+
+.section.active {
+    display: block; /* Mostra quando ativo */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #2563eb, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--gray);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* ================================================
+   SEÇÃO 1: ANÁLISE DE GRÁFICO
+   ================================================ */
+
+.upload-area {
+    margin: 2rem 0;
+}
+
+.upload-box {
+    border: 3px dashed rgba(37, 99, 235, 0.5);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    background: rgba(30, 41, 59, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.upload-box i {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.upload-box p {
+    font-size: 1.1rem;
+    color: var(--gray);
+}
+
+.preview-container {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.preview-container img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-remove {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.resultado-analise {
+    margin-top: 2rem;
+}
+
+.resultado-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.resultado-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.resultado-badge {
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.resultado-badge.comprar {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.resultado-badge.vender {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+    border: 2px solid var(--danger);
+}
+
+.resultado-badge.neutro {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--warning);
+    border: 2px solid var(--warning);
+}
+
+.confianca {
+    margin-bottom: 1.5rem;
+}
+
+.confianca label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--gray);
+}
+
+.confianca-bar {
+    width: 100%;
+    height: 30px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.confianca-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success), var(--primary));
+    border-radius: 1rem;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.recomendacao {
+    background: rgba(37, 99, 235, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--primary);
+}
+
+/* ================================================
+   SEÇÃO 2: CRM FINANCEIRO
+   ================================================ */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.info-card.green { border-left: 4px solid var(--success); }
+.info-card.red { border-left: 4px solid var(--danger); }
+.info-card.blue { border-left: 4px solid var(--primary); }
+.info-card.orange { border-left: 4px solid var(--warning); }
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.green .card-icon {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+}
+
+.red .card-icon {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+}
+
+.blue .card-icon {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--primary);
+}
+
+.orange .card-icon {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--warning);
+}
+
+.card-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+}
+
+.card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.form-container {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.form-container h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.historico-container {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.historico-container h3 {
+    margin-bottom: 1.5rem;
+}
+
+.historico-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.operacao-item {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid;
+    transition: all 0.3s ease;
+}
+
+.operacao-item:hover {
+    transform: translateX(5px);
+}
+
+.operacao-item.win {
+    border-color: var(--success);
+}
+
+.operacao-item.loss {
+    border-color: var(--danger);
+}
+
+.operacao-info {
+    display: flex;
+    gap: 2rem;
+}
+
+.operacao-tipo {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.operacao-valor {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--gray);
+    padding: 2rem;
+}
+
+/* ================================================
+   SEÇÃO 3: DASHBOARD DE SINAIS
+   ================================================ */
+
+.semaforos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.semaforo-card {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.semaforo-card h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.semaforo {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.luz {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.luz.ativo.verde {
+    background: var(--success);
+    box-shadow: 0 0 20px var(--success);
+}
+
+.luz.ativo.amarelo {
+    background: var(--warning);
+    box-shadow: 0 0 20px var(--warning);
+}
+
+.luz.ativo.vermelho {
+    background: var(--danger);
+    box-shadow: 0 0 20px var(--danger);
+}
+
+.semaforo-status {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.sincronia-painel {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.sincronia-painel h3 {
+    margin-bottom: 1.5rem;
+}
+
+.sincronia-resultado {
+    background: rgba(0,0,0,0.3);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.sincronia-icone {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.sincronia-resultado.comprar {
+    border: 2px solid var(--success);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.sincronia-resultado.comprar .sincronia-icone {
+    color: var(--success);
+}
+
+.sincronia-resultado.vender {
+    border: 2px solid var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.sincronia-resultado.vender .sincronia-icone {
+    color: var(--danger);
+}
+
+/* ================================================
+   SEÇÃO 4: CALCULADORAS
+   ================================================ */
+
+.calculadoras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.calc-card {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.calc-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.calc-desc {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+.calc-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.calc-form small {
+    display: block;
+    color: var(--warning);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.btn-calc {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-calc:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.calc-resultado {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.75rem;
+    border: 2px solid var(--primary);
+}
+
+.calc-resultado h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.resultado-valor {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.resultado-valor span {
+    color: var(--success);
+}
+
+.resultado-info {
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+}
+
+.resultado-info span {
+    color: white;
+    font-weight: 600;
+}
+
+/* ================================================
+   RESPONSIVIDADE (CELULAR)
+   ================================================ */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .cards-grid,
+    .semaforos-grid,
+    .calculadoras-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}

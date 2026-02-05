@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- CABEÇA DO SITE: Informações que o navegador precisa saber -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Trading - Análise Inteligente</title>
+    
+    <!-- LINK PARA O CSS: Conecta a "roupa" (aparência) do site -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ÍCONES: Biblioteca de ícones bonitos (como emojis profissionais) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- MENU LATERAL: Como uma gaveta de ferramentas -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <h2>TradingPro</h2>
+        </div>
+        
+        <!-- BOTÕES DO MENU: Cada um abre uma seção diferente -->
+        <ul class="menu">
+            <li class="menu-item active" data-section="analise">
+                <i class="fas fa-camera"></i>
+                <span>Análise de Gráfico</span>
+            </li>
+            <li class="menu-item" data-section="crm">
+                <i class="fas fa-wallet"></i>
+                <span>Gerenciador Financeiro</span>
+            </li>
+            <li class="menu-item" data-section="sinais">
+                <i class="fas fa-traffic-light"></i>
+                <span>Dashboard de Sinais</span>
+            </li>
+            <li class="menu-item" data-section="calculadoras">
+                <i class="fas fa-calculator"></i>
+                <span>Calculadoras</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ÁREA PRINCIPAL: Onde o conteúdo aparece -->
+    <main class="main-content">
+        
+        <!-- SEÇÃO 1: ANÁLISE DE GRÁFICO -->
+        <section id="analise" class="section active">
+            <h1>📸 Análise Inteligente de Gráfico</h1>
+            <p class="subtitle">Envie um print do seu gráfico e descubra se é hora de COMPRAR ou VENDER</p>
+            
+            <!-- ÁREA DE UPLOAD: Como um "botão de anexar" do WhatsApp -->
+            <div class="upload-area">
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste seu print aqui ou clique para selecionar</p>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                </div>
+                
+                <!-- PREVIEW: Mostra a imagem que você enviou -->
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img id="previewImage" alt="Preview">
+                    <button class="btn-remove" id="removeImage">
+                        <i class="fas fa-times"></i> Remover
+                    </button>
+                </div>
+            </div>
+
+            <!-- BOTÃO DE ANÁLISE: Dispara a "mágica" -->
+            <button class="btn-primary" id="analisarBtn" disabled>
+                <i class="fas fa-magic"></i> Analisar Gráfico
+            </button>
+
+            <!-- RESULTADO: Aparece depois da análise -->
+            <div class="resultado-analise" id="resultadoAnalise" style="display: none;">
+                <div class="resultado-card">
+                    <div class="resultado-header">
+                        <h3>Resultado da Análise</h3>
+                        <span class="resultado-badge" id="resultadoBadge"></span>
+                    </div>
+                    <div class="resultado-body">
+                        <div class="confianca">
+                            <label>Nível de Confiança:</label>
+                            <div class="confianca-bar">
+                                <div class="confianca-fill" id="confiancaFill"></div>
+                            </div>
+                            <span id="confiancaTexto"></span>
+                        </div>
+                        <div class="recomendacao" id="recomendacao"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: CRM FINANCEIRO -->
+        <section id="crm" class="section">
+            <h1>💰 Gerenciador Financeiro</h1>
+            <p class="subtitle">Controle total sobre suas operações e resultados</p>
+
+            <!-- CARDS DE RESUMO: Como o "resumo" do extrato bancário -->
+            <div class="cards-grid">
+                <div class="info-card green">
+                    <div class="card-icon"><i class="fas fa-arrow-up"></i></div>
+                    <div class="card-info">
+                        <p class="card-label">Lucro Hoje</p>
+                        <p class="card-value" id="lucroHoje">R$ 0,00</p>
+                    </div>
+                </div>
+                
+                <div class="info-card red">
+                    <div class="card-icon"><i class="fas fa-arrow-down"></i></div>
+                    <div class="card-info">
+                        <p class="card-label">Perda Hoje</p>
+                        <p class="card-value" id="perdaHoje">R$ 0,00</p>
+                    </div>
+                </div>
+                
+                <div class="info-card blue">
+                    <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="card-info">
+                        <p class="card-label">Saldo do Dia</p>
+                        <p class="card-value" id="saldoDia">R$ 0,00</p>
+                    </div>
+                </div>
+                
+                <div class="info-card orange">
+                    <div class="card-icon"><i class="fas fa-redo"></i></div>
+                    <div class="card-info">
+                        <p class="card-label">Trades p/ Recuperar</p>
+                        <p class="card-value" id="tradesRecuperar">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO: Adicionar nova operação -->
+            <div class="form-container">
+                <h3>➕ Registrar Nova Operação</h3>
+                <form id="formOperacao">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipo de Operação</label>
+                            <select id="tipoOperacao" required>
+                                <option value="">Selecione...</option>
+                                <option value="win">✅ Win (Ganhou)</option>
+                                <option value="loss">❌ Loss (Perdeu)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Valor (R$)</label>
+                            <input type="number" id="valorOperacao" step="0.01" placeholder="Ex: 50.00" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Horário</label>
+                            <input type="time" id="horarioOperacao" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-plus"></i> Adicionar Operação
+                    </button>
+                </form>
+            </div>
+
+            <!-- HISTÓRICO: Lista de operações -->
+            <div class="historico-container">
+                <h3>📊 Histórico de Operações</h3>
+                <div class="historico-lista" id="historicoLista">
+                    <p class="empty-message">Nenhuma operação registrada hoje</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: DASHBOARD DE SINAIS -->
+        <section id="sinais" class="section">
+            <h1>🚦 Dashboard de Sinais</h1>
+            <p class="subtitle">Visualize a sincronia dos indicadores em tempo real</p>
+
+            <!-- SEMÁFOROS: Sistema visual de sinais -->
+            <div class="semaforos-grid">
+                <div class="semaforo-card">
+                    <h3>Tendência</h3>
+                    <div class="semaforo">
+                        <div class="luz" id="tendenciaVerde"></div>
+                        <div class="luz" id="tendenciaAmarelo"></div>
+                        <div class="luz" id="tendenciaVermelho"></div>
+                    </div>
+                    <p class="semaforo-status" id="tendenciaStatus">Aguardando...</p>
+                </div>
+
+                <div class="semaforo-card">
+                    <h3>Volume</h3>
+                    <div class="semaforo">
+                        <div class="luz" id="volumeVerde"></div>
+                        <div class="luz" id="volumeAmarelo"></div>
+                        <div class="luz" id="volumeVermelho"></div>
+                    </div>
+                    <p class="semaforo-status" id="volumeStatus">Aguardando...</p>
+                </div>
+
+                <div class="semaforo-card">
+                    <h3>Momentum</h3>
+                    <div class="semaforo">
+                        <div class="luz" id="momentumVerde"></div>
+                        <div class="luz" id="momentumAmarelo"></div>
+                        <div class="luz" id="momentumVermelho"></div>
+                    </div>
+                    <p class="semaforo-status" id="momentumStatus">Aguardando...</p>
+                </div>
+            </div>
+
+            <!-- PAINEL DE SINCRONIZAÇÃO -->
+            <div class="sincronia-painel">
+                <h3>📈 Sincronização Geral</h3>
+                <div class="sincronia-resultado" id="sincroniaResultado">
+                    <div class="sincronia-icone">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <p>Aguardando análise dos indicadores...</p>
+                </div>
+                <button class="btn-primary" id="atualizarSinais">
+                    <i class="fas fa-refresh"></i> Atualizar Sinais
+                </button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: CALCULADORAS -->
+        <section id="calculadoras" class="section">
+            <h1>🧮 Calculadoras de Trading</h1>
+            <p class="subtitle">Calcule lotes e posições para não quebrar sua banca</p>
+
+            <div class="calculadoras-grid">
+                <!-- CALCULADORA DE LOTE -->
+                <div class="calc-card">
+                    <h3>📊 Calculadora de Lote</h3>
+                    <p class="calc-desc">Descubra o tamanho ideal do lote baseado no seu risco</p>
+                    
+                    <div class="calc-form">
+                        <div class="form-group">
+                            <label>Saldo da Conta (R$)</label>
+                            <input type="number" id="saldoConta" placeholder="1000.00" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Risco por Trade (%)</label>
+                            <input type="number" id="riscoTrade" placeholder="2" step="0.1" max="10">
+                            <small>Recomendado: 1-3%</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Stop Loss (pontos)</label>
+                            <input type="number" id="stopLoss" placeholder="50">
+                        </div>
+                        
+                        <button class="btn-calc" id="calcLoteBtn">
+                            <i class="fas fa-calculator"></i> Calcular Lote
+                        </button>
+                        
+                        <div class="calc-resultado" id="resultadoLote" style="display: none;">
+                            <h4>Resultado:</h4>
+                            <p class="resultado-valor">Tamanho do Lote: <span id="valorLote"></span></p>
+                            <p class="resultado-info">Perda Máxima: <span id="perdaMaxima"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALCULADORA DE POSIÇÃO -->
+                <div class="calc-card">
+                    <h3>💵 Calculadora de Posição</h3>
+                    <p class="calc-desc">Calcule quanto você pode arriscar sem quebrar a banca</p>
+                    
+                    <div class="calc-form">
+                        <div class="form-group">
+                            <label>Capital Total (R$)</label>
+                            <input type="number" id="capitalTotal" placeholder="5000.00" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Número de Trades Simultâneos</label>
+                            <input type="number" id="numTrades" placeholder="3" min="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Margem de Segurança (%)</label>
+                            <input type="number" id="margemSeguranca" placeholder="20" step="5">
+                            <small>Recomendado: 20-30%</small>
+                        </div>
+                        
+                        <button class="btn-calc" id="calcPosicaoBtn">
+                            <i class="fas fa-calculator"></i> Calcular Posição
+                        </button>
+                        
+                        <div class="calc-resultado" id="resultadoPosicao" style="display: none;">
+                            <h4>Resultado:</h4>
+                            <p class="resultado-valor">Valor por Trade: <span id="valorPorTrade"></span></p>
+                            <p class="resultado-info">Capital Disponível: <span id="capitalDisponivel"></span></p>
+                            <p class="resultado-info">Capital Reservado: <span id="capitalReservado"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SCRIPTS: O cérebro JavaScript que faz tudo funcionar -->
+    <script src="js/main.js"></script>
+    <script src="js/analise.js"></script>
+    <script src="js/crm.js"></script>
+    <script src="js/calculadoras.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "configuracoes": {
+    "nome_sistema": "TradingPro",
+    "versao": "1.0.0",
+    "autor": "Seu Nome",
+    "descricao": "Sistema de análise e gerenciamento de trading"
+  },
+  
+  "usuario": {
+    "nome": "",
+    "meta_diaria": 200,
+    "valor_medio_trade": 50,
+    "payout": 0.80,
+    "risco_maximo": 2
+  },
+  
+  "indicadores_padrao": {
+    "tendencia": {
+      "nome": "Tendência",
+      "descricao": "Indica a direção geral do mercado",
+      "peso": 40
+    },
+    "volume": {
+      "nome": "Volume",
+      "descricao": "Mede a força das movimentações",
+      "peso": 30
+    },
+    "momentum": {
+      "nome": "Momentum",
+      "descricao": "Velocidade das mudanças de preço",
+      "peso": 30
+    }
+  },
+  
+  "estrategias": [
+    {
+      "id": 1,
+      "nome": "Rompimento de Resistência",
+      "tipo": "compra",
+      "confianca": "alta",
+      "descricao": "Entrada quando o preço rompe uma resistência importante com volume"
+    },
+    {
+      "id": 2,
+      "nome": "Reversão de Baixa",
+      "tipo": "venda",
+      "confianca": "média",
+      "descricao": "Entrada quando há sinais claros de reversão após tendência de alta"
+    },
+    {
+      "id": 3,
+      "nome": "Convergência de Médias",
+      "tipo": "compra",
+      "confianca": "alta",
+      "descricao": "Quando médias móveis se alinham na mesma direção"
+    }
+  ],
+  
+  "avisos": {
+    "risco_alto": "⚠️ Atenção: Risco acima de 3% por trade pode comprometer sua banca!",
+    "sem_stop": "❌ Nunca opere sem definir um stop loss!",
+    "overtrading": "⚠️ Cuidado com overtrading - qualidade > quantidade",
+    "emocional": "🧠 Não opere com emoção! Siga sua estratégia."
+  },
+  
+  "dicas": [
+    "Sempre use stop loss em suas operações",
+    "Nunca arrisque mais de 2-3% da banca em um único trade",
+    "Mantenha um diário de trades para analisar seus erros",
+    "A paciência é a arma mais poderosa de um trader",
+    "Não tente recuperar perdas com operações emocionais",
+    "Diversifique seus horários de operação",
+    "Estude o mercado todos os dias, mesmo sem operar"
+  ],
+  
+  "horarios_recomendados": {
+    "forex": ["09:00-12:00", "14:00-18:00"],
+    "indices": ["10:00-17:00"],
+    "cripto": ["24h"]
+  }
+}
