@@ -8,6 +8,11 @@ Este é um sistema web completo para traders que oferece:
 ✅ **Gerenciamento Financeiro** - Controle de lucros, perdas e recuperação  
 ✅ **Dashboard de Sinais** - Semáforo visual de indicadores  
 ✅ **Calculadoras** - Cálculo de lote e gestão de posição  
+✅ **📰 Calendário Econômico** - Alertas de notícias de alto impacto  
+✅ **✅ Checklist Pré-Operacional** - Disciplina antes de operar  
+✅ **🔥 Mapa de Calor** - Volatilidade de pares de moedas  
+✅ **😎 Análise Emocional** - Descubra como suas emoções afetam resultados  
+✅ **🌡️ Termômetro de Medo/Ganância** - Índice de volatilidade do mercado  
 
 ---
 
@@ -45,6 +50,7 @@ Use o **menu lateral** para alternar entre:
 - 💰 **Gerenciador Financeiro** - Registre operações
 - 🚦 **Dashboard de Sinais** - Veja indicadores
 - 🧮 **Calculadoras** - Calcule lotes e posições
+- 🛠️ **Ferramentas Avançadas** - Recursos profissionais
 
 ### PASSO 3: Usar Cada Funcionalidade
 
@@ -88,6 +94,107 @@ Use o **menu lateral** para alternar entre:
 2. Quantos trades simultâneos
 3. Margem de segurança (20-30%)
 4. Clique em "Calcular Posição"
+
+#### 🛠️ Ferramentas Avançadas
+
+**📰 Calendário Econômico:**
+- Veja notícias importantes das próximas 24 horas
+- Alertas quando há notícia de alto impacto em menos de 30 minutos
+- **REGRA DE OURO:** Nunca opere 15 minutos antes/depois de notícias importantes!
+
+**✅ Checklist Pré-Operacional:**
+1. Marque TODOS os itens honestamente
+2. Só opere quando 100% dos itens estiverem marcados
+3. O botão "Análise Liberada" só ativa quando completar tudo
+4. **IMPORTANTE:** Isso vai te salvar de operações emocionais!
+
+**🔥 Mapa de Calor:**
+- Verde forte: Moeda em alta (considere COMPRA)
+- Vermelho forte: Moeda em baixa (considere VENDA)
+- Neutro: Aguarde melhor momento
+- Clique em qualquer par para ver recomendação detalhada
+
+**😎 Análise Emocional (no CRM):**
+1. Ao registrar operações, selecione como você se sentiu
+2. O sistema mostra quais emoções geram mais WINS/LOSSES
+3. Descubra seu "estado mental ideal" para operar
+4. **INSIGHT:** "Você perde mais quando está com raiva" - dados reais!
+
+**🌡️ Termômetro de Medo/Ganância:**
+- 0-20: Medo Extremo (reduza lote 50%)
+- 20-40: Medo (reduza lote 30%)
+- 40-60: Neutro (lote normal)
+- 60-80: Ganância (cuidado com euforia)
+- 80-100: Ganância Extrema (prepare reversão)
+
+---
+
+## 🎓 Como Funciona Cada Ferramenta
+
+### 📰 Calendário Econômico
+
+**O que faz:**
+Mostra notícias importantes que podem impactar o mercado (tipo decisão de juros do FED, relatório de emprego, etc.)
+
+**Por que é importante:**
+Operar durante notícias importantes é como dirigir com os olhos vendados. A volatilidade explode e você pode ter perdas gigantes mesmo com análise correta.
+
+**Como usar:**
+- Sempre verifique ANTES de abrir posição
+- Se aparecer alerta vermelho, PARE de operar
+- Aguarde pelo menos 15 minutos após a notícia
+
+### ✅ Checklist Pré-Operacional
+
+**O que faz:**
+Te força a pensar antes de operar (igual checklist de piloto antes de decolar)
+
+**Por que é importante:**
+90% dos losses vêm de operações emocionais. Este checklist te protege de você mesmo!
+
+**Como usar:**
+- Seja 100% honesto nas respostas
+- Se não conseguir marcar tudo, NÃO OPERE
+- Melhor perder uma oportunidade do que perder dinheiro
+
+### 🔥 Mapa de Calor
+
+**O que faz:**
+Mostra quais pares de moedas estão "quentes" (com muita movimentação)
+
+**Por que é importante:**
+Você quer operar onde tem movimento (volatilidade). Mercado parado = difícil lucrar.
+
+**Como usar:**
+- Procure por cores FORTES (verde ou vermelho intenso)
+- Evite pares neutros (sem cor)
+- Combine com sua análise técnica
+
+### 😎 Análise Emocional
+
+**O que faz:**
+Rastreia suas emoções durante operações e mostra padrões
+
+**Por que é importante:**
+Você vai descobrir que perde mais quando está com raiva, ansioso, ou ganancioso. É psicologia pura!
+
+**Como usar:**
+- Seja honesto sobre como se sente
+- Depois de 20+ operações, analise os dados
+- Crie regras: "Nunca operar quando estiver com raiva"
+
+### 🌡️ Termômetro de Medo/Ganância
+
+**O que faz:**
+Mede se o mercado está em pânico (medo) ou euforia (ganância)
+
+**Por que é importante:**
+"Seja ganancioso quando outros têm medo, e tenha medo quando outros são gananciosos" - Warren Buffett
+
+**Como usar:**
+- Medo extremo: Boas oportunidades de compra
+- Ganância extrema: Hora de vender ou ficar fora
+- Use para ajustar o tamanho do seu lote
 
 ---
 

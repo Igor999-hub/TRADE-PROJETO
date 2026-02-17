@@ -39,6 +39,10 @@
                 <i class="fas fa-calculator"></i>
                 <span>Calculadoras</span>
             </li>
+            <li class="menu-item" data-section="ferramentas">
+                <i class="fas fa-toolbox"></i>
+                <span>Ferramentas Avançadas</span>
+            </li>
         </ul>
     </nav>
 
@@ -156,6 +160,20 @@
                             <label>Horário</label>
                             <input type="time" id="horarioOperacao" required>
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Como você se sentiu? 😊</label>
+                            <select id="emocaoOperacao" required>
+                                <option value="">Selecione uma emoção...</option>
+                                <option value="confiante">😎 Confiante</option>
+                                <option value="calmo">😌 Calmo</option>
+                                <option value="ansioso">😰 Ansioso</option>
+                                <option value="ganancioso">🤑 Ganancioso</option>
+                                <option value="raiva">😡 Com Raiva</option>
+                                <option value="medo">😨 Com Medo</option>
+                                <option value="euforia">🤩 Eufórico</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn-primary">
@@ -169,6 +187,20 @@
                 <h3>📊 Histórico de Operações</h3>
                 <div class="historico-lista" id="historicoLista">
                     <p class="empty-message">Nenhuma operação registrada hoje</p>
+                </div>
+            </div>
+            
+            <!-- ANÁLISE EMOCIONAL -->
+            <div class="analise-emocional-card">
+                <h3>🧠 Análise de Desempenho Emocional</h3>
+                <p class="analise-desc">Descubra como suas emoções afetam seus resultados</p>
+                
+                <div class="emocoes-stats" id="emocoesStats">
+                    <p class="empty-message">Registre operações para ver sua análise emocional</p>
+                </div>
+                
+                <div class="insights-emocionais" id="insightsEmocionais">
+                    <!-- Preenchido dinamicamente -->
                 </div>
             </div>
         </section>
@@ -303,6 +335,179 @@
             </div>
         </section>
 
+        <!-- SEÇÃO 5: FERRAMENTAS AVANÇADAS -->
+        <section id="ferramentas" class="section">
+            <h1>🛠️ Ferramentas Avançadas</h1>
+            <p class="subtitle">Recursos profissionais para maximizar seus resultados</p>
+
+            <!-- ALERTA DE NOTÍCIAS ECONÔMICAS -->
+            <div class="ferramenta-card">
+                <div class="ferramenta-header">
+                    <h2>📰 Calendário Econômico - Notícias de Alto Impacto</h2>
+                    <button class="btn-refresh" id="atualizarNoticias">
+                        <i class="fas fa-sync-alt"></i> Atualizar
+                    </button>
+                </div>
+                
+                <div class="avisos-importantes" id="avisosNoticias">
+                    <div class="aviso-destaque">
+                        <i class="fas fa-bell"></i>
+                        <p>Carregando notícias importantes...</p>
+                    </div>
+                </div>
+                
+                <div class="proximas-noticias">
+                    <h3>📅 Próximas 24 horas:</h3>
+                    <div class="timeline-noticias" id="timelineNoticias">
+                        <!-- Preenchido dinamicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHECKLIST PRÉ-OPERACIONAL -->
+            <div class="ferramenta-card">
+                <div class="ferramenta-header">
+                    <h2>✅ Checklist Pré-Operacional</h2>
+                    <span class="badge-info">Complete antes de operar!</span>
+                </div>
+                
+                <form id="checklistForm" class="checklist-container">
+                    <p class="checklist-intro">
+                        <i class="fas fa-info-circle"></i>
+                        Responda honestamente. Seu sucesso depende da sua disciplina!
+                    </p>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check1" name="mercado">
+                        <label for="check1">
+                            <strong>O mercado está em tendência clara?</strong>
+                            <small>Evite operar em lateralização</small>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check2" name="noticias">
+                        <label for="check2">
+                            <strong>Não há notícias importantes nos próximos 30 minutos?</strong>
+                            <small>Verifique o calendário econômico acima</small>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check3" name="emocional">
+                        <label for="check3">
+                            <strong>Estou emocionalmente equilibrado?</strong>
+                            <small>Sem raiva, ganância ou desespero</small>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check4" name="gerenciamento">
+                        <label for="check4">
+                            <strong>Defini meu stop loss e take profit?</strong>
+                            <small>Nunca opere sem gestão de risco</small>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check5" name="meta">
+                        <label for="check5">
+                            <strong>Estou dentro da minha meta diária?</strong>
+                            <small>Não force trades desnecessários</small>
+                        </label>
+                    </div>
+                    
+                    <div class="checklist-resultado" id="checklistResultado">
+                        <p class="checklist-bloqueado">
+                            <i class="fas fa-lock"></i>
+                            Complete todos os itens para liberar análise
+                        </p>
+                    </div>
+                    
+                    <button type="button" class="btn-primary btn-liberado" id="liberarAnalise" disabled>
+                        <i class="fas fa-lock"></i> Análise Bloqueada
+                    </button>
+                </form>
+            </div>
+
+            <!-- MAPA DE CALOR DE MOEDAS -->
+            <div class="ferramenta-card">
+                <div class="ferramenta-header">
+                    <h2>🔥 Mapa de Calor - Volatilidade de Pares</h2>
+                    <button class="btn-refresh" id="atualizarHeatmap">
+                        <i class="fas fa-sync-alt"></i> Atualizar
+                    </button>
+                </div>
+                
+                <p class="heatmap-desc">
+                    <i class="fas fa-info-circle"></i>
+                    Verde = Alta (Bullish) | Vermelho = Baixa (Bearish) | Quanto mais intenso, maior a volatilidade
+                </p>
+                
+                <div class="heatmap-grid" id="heatmapGrid">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+                
+                <div class="heatmap-legenda">
+                    <h4>Recomendações:</h4>
+                    <div class="legenda-item verde">
+                        <div class="legenda-cor"></div>
+                        <span>🟢 <strong>Forte Alta</strong> - Considere operações de compra</span>
+                    </div>
+                    <div class="legenda-item vermelho">
+                        <div class="legenda-cor"></div>
+                        <span>🔴 <strong>Forte Baixa</strong> - Considere operações de venda</span>
+                    </div>
+                    <div class="legenda-item neutro">
+                        <div class="legenda-cor"></div>
+                        <span>⚪ <strong>Neutro</strong> - Aguarde melhor momento</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TERMÔMETRO DE MEDO E GANÂNCIA -->
+            <div class="ferramenta-card">
+                <div class="ferramenta-header">
+                    <h2>🌡️ Termômetro de Medo e Ganância</h2>
+                    <button class="btn-refresh" id="atualizarTermometro">
+                        <i class="fas fa-sync-alt"></i> Atualizar
+                    </button>
+                </div>
+                
+                <div class="termometro-container">
+                    <div class="termometro-gauge">
+                        <canvas id="termometroCanvas" width="300" height="200"></canvas>
+                    </div>
+                    
+                    <div class="termometro-info" id="termometroInfo">
+                        <h3 id="termometroStatus">Calculando...</h3>
+                        <p id="termometroDescricao">Aguarde...</p>
+                        <div class="termometro-recomendacao" id="termometroRecomendacao">
+                            <!-- Preenchido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="volatilidade-info">
+                    <h4>📊 Análise de Volatilidade:</h4>
+                    <div class="volatilidade-grid">
+                        <div class="vol-item">
+                            <span class="vol-label">Volatilidade Atual:</span>
+                            <span class="vol-value" id="volAtual">--</span>
+                        </div>
+                        <div class="vol-item">
+                            <span class="vol-label">Tendência:</span>
+                            <span class="vol-value" id="volTendencia">--</span>
+                        </div>
+                        <div class="vol-item">
+                            <span class="vol-label">Recomendação de Lote:</span>
+                            <span class="vol-value" id="volLote">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- SCRIPTS: O cérebro JavaScript que faz tudo funcionar -->
@@ -310,5 +515,6 @@
     <script src="js/analise.js"></script>
     <script src="js/crm.js"></script>
     <script src="js/calculadoras.js"></script>
+    <script src="js/ferramentas.js"></script>
 </body>
 </html>
